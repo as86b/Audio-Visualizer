@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package audioviz;
 
 import static java.lang.Integer.min;
@@ -10,9 +5,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
-/**
- *
- * @author dale
+/*
+ * @author Austin Sizemore
  */
 public class EllipseVisualizer1 implements Visualizer {
     
