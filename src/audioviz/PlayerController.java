@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package audioviz;
 
 import java.io.File;
@@ -28,7 +23,7 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * @author dale
+ * @author Austin Sizemore
  * Music: http://www.bensound.com/royalty-free-music
  * http://www.audiocheck.net/testtones_sinesweep20-20k.php
  * http://stackoverflow.com/questions/11994366/how-to-reference-primarystage
@@ -80,7 +75,8 @@ public class PlayerController implements Initializable {
     
     //personal variables declared below
     
-    //locked originally so intialize to false
+    //locked originally so intialize to false of being unable to slide
+    //it ourselves
     //because later on we change to true while being pressed on
     private boolean selectionSlider = true;
     
