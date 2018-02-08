@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package audioviz;
 
 import java.io.File;
@@ -20,9 +25,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-/*
+/**
  * FXML Controller class
- * @author Austin Sizemore
+ *
+ * @author dale
  * Music: http://www.bensound.com/royalty-free-music
  * http://www.audiocheck.net/testtones_sinesweep20-20k.php
  * http://stackoverflow.com/questions/11994366/how-to-reference-primarystage
@@ -72,6 +78,15 @@ public class PlayerController implements Initializable {
     private Visualizer currentVisualizer;
     private final Integer[] bandsList = {1, 2, 4, 8, 16, 20, 40, 60, 100, 120, 140};
     
+    //personal variables declared below
+    
+    //locked originally so intialize to false
+    //because later on we change to true while being pressed on
+    private boolean selectionSlider = true;
+    
+    //https://stackoverflow.com/questions/8895337/how-do-i-limit-the-number-of-decimals-printed-for-a-double
+    private DecimalFormat decimalFormat = new decimalFormat("#.00");
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         bandsText.setText(Integer.toString(numBands));
@@ -99,6 +114,17 @@ public class PlayerController implements Initializable {
             });
             bandsMenu.getItems().add(menuItem);
         }
+        
+        //if else statement instead?
+        //https://docs.oracle.com/javase/6/docs/api/java/awt/event/MouseListener.html
+        timeSlider.onMousePressedProperty(MouseEvent e) -> {
+            selectionSlider = true;
+        }
+        
+        timeSlider.onMouseReleasedProperty(MouseEvent e) -> {
+            //we have to go back to being unable to change it 
+            selectionSlider = false;
+        }    
     }
     
     private void selectVisualizer(ActionEvent event) {
@@ -175,7 +201,12 @@ public class PlayerController implements Initializable {
     
     private void handleUpdate(double timestamp, double duration, float[] magnitudes, float[] phases) {
         Duration ct = mediaPlayer.getCurrentTime();
-        double ms = ct.toMillis();
+        //change unit here to get rid of decimals
+        //in C, we use %.2f for instance
+        //https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+        //Java.lang.Math.round()? but it will get rid of the one decimal place
+        double ms = ct.toMillis()
+        ms
         currentText.setText(Double.toString(ms));
         timeSlider.setValue(ms);
         
