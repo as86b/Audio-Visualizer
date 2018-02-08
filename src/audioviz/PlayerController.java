@@ -85,7 +85,8 @@ public class PlayerController implements Initializable {
     private boolean selectionSlider = true;
     
     //https://stackoverflow.com/questions/8895337/how-do-i-limit-the-number-of-decimals-printed-for-a-double
-    private DecimalFormat decimalFormat = new decimalFormat("#.00");
+    //https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html
+    //private DecimalFormat decimalFormat = new decimalFormat("#0000000.00");
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -122,6 +123,12 @@ public class PlayerController implements Initializable {
         }
         
         timeSlider.onMouseReleasedProperty(MouseEvent e) -> {
+            //some code to notify the player of the change in music to seek
+            //out the new spot in the song
+            //if(!mediaPlayer) {
+            //mediaPlayer.seek();
+            //medPlayer.play();
+            //}
             //we have to go back to being unable to change it 
             selectionSlider = false;
         }    
